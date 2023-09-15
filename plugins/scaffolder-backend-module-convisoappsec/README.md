@@ -104,7 +104,7 @@ Finished module configuration steps, the software template can be loaded on soft
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: convisoappsec:project:create
+  name: convisoappsec-project-create
   title: Create a ConvisoAppSec project
   description: Creates a new ConvisoAppSec project and register component on software catalog
   tags:
