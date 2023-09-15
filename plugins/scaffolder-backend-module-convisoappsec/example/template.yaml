@@ -1,0 +1,106 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: convisoappsec-project-create
+  title: Create a ConvisoAppSec project
+  description: Creates a new ConvisoAppSec project and register component on software catalog
+  tags:
+    - conviso
+    - convisoappsec
+    - security
+  links:
+    - title: ConvisoAppSec Documentation
+      url: https://docs.convisoappsec.com/
+spec:
+  owner: raalbuquerque
+  type: service
+
+  parameters:
+    - title: Project information
+      required:
+        - label
+        - goal
+        - scope
+        - typeId
+        - estimatedStartDate
+      properties:
+        label:
+          title: Project Label
+          type: string
+          description: Name of the project
+          pattern: '^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$'
+          ui:autofocus: true
+        goal:
+          title: Goal
+          type: string
+          description: Goal
+        scope:
+          title: Scope
+          type: string
+          description: Scope
+        typeId:
+          title: Type
+          type: number
+          description: Select the project type from list
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+            - 14
+            - 15
+            - 16
+          enumNames:
+            - penetration_test
+            - code_review
+            - vulnerability_assessment
+            - wordpress_plugin_assessment
+            - accuracy
+            - internal
+            - web_application_firewall
+            - threat_modeling
+            - security_requirements
+            - consulting
+            - sensei
+            - armature
+            - network_penetration_testing
+            - web_penetration_testing
+            - mobile_penetration_testing
+            - reverse_engineer
+        estimatedStartDate:
+          title: Start Date
+          type: string
+          format: date
+          description: Estimated date when analysis will start
+          hint: Not before today
+          ui:widget: date
+          ui:options:
+            yearsRange: ['2020', '2023']
+  steps:
+    - id: createConvisoAppSecProject
+      name: Create AppSecFlow project
+      action: convisoappsec:project:create
+      input:
+        label: ${{ parameters.label }}
+        goal: ${{ parameters.goal }}
+        scope: ${{ parameters.scope }}
+        typeId: ${{ parameters.typeId }}
+        estimatedStartDate: ${{ parameters.estimatedStartDate }}
+        tags: ${{ parameters.tags }}
+  output:
+    links:
+      - title: Project URL
+        url: ${{ steps['createConvisoAppSecProject'].output.projectUrl }}
+    text:
+      - title: More information
+        content: |
+          **Entity URL:** ${{ steps['createConvisoAppSecProject'].output.projectPid }}
