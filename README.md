@@ -6,7 +6,7 @@ This repository contains plugins created over a vanilla Backstage installation.
 
 ### Scaffolder plugin to create a ConvisoAppSec project
 
-> **About ConvisoAppSec**
+> **Note**
 >
 > ConvisoAppSec is an ASPM (Application Security Posture Management) used on software development process in order to identify, correlate, and prioritize security vulnerabilities.
 >
@@ -16,7 +16,7 @@ This scaffolder plugin provides an integration with ConvisoAppSec API in order t
 
 Installation instructions can be found here: [ConvisoAppSec scalffolder actions](https://www.npmjs.com/package/@raalbuquerque/backstage-plugin-scaffolder-backend-module-convisoappsec)
 
-Plugin source code is available [here](https://github.com/rarruda-albuquerque/backstage-plugins/plugins/scaffolder-backend-module-convisoappsec)
+Plugin source code is available [here](https://github.com/rarruda-albuquerque/backstage-plugins/tree/main/plugins/scaffolder-backend-module-convisoappsec)
 
 ## Try out and discover plugins implementation details
 
